@@ -14,6 +14,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *longLabel;
 @property (strong, nonatomic) IBOutlet UILabel *latLabel;
 @property (strong, nonatomic) IBOutlet UILabel *accuracyLabel;
+@property (strong, nonatomic) IBOutlet UILabel *addressLabel;
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @end
 
 @implementation ViewController
@@ -30,6 +32,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Location Manager
+
 - (CLLocationManager *)manager {
     
     if (!_manager) {
@@ -45,7 +49,6 @@
     // create and start the location manager
     
     [self.manager startUpdatingLocation];
-    [self.manager stopUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -68,6 +71,44 @@
     self.latLabel.text = latText;
     self.accuracyLabel.text = accuracy;
     
+    // and update our Map View
+    [self updateMapView:currentLocation];
+}
+
+#pragma mark - Map Kit
+
+- (void)updateMapView:(CLLocation *)location {
+    
+    // create a region and pass it to the Map View
+    MKCoordinateRegion region;
+    region.center.latitude = location.coordinate.latitude;
+    region.center.longitude = location.coordinate.longitude;
+    region.span.latitudeDelta = 0.001;
+    region.span.longitudeDelta = 0.001;
+    
+    [self.mapView setRegion:region animated:YES];
+    
+    // remove previous marker
+    MKPlacemark *previousMarker = [self.mapView.annotations lastObject];
+    [self.mapView removeAnnotation:previousMarker];
+    
+    // create a new marker in the middle
+    MKPlacemark *marker = [[MKPlacemark alloc]initWithCoordinate:location.coordinate addressDictionary:nil];
+    [self.mapView addAnnotation:marker];
+    
+    // create an address from our coordinates
+    CLGeocoder *geocoder = [[CLGeocoder alloc]init];
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+        
+        CLPlacemark *placemark = [placemarks lastObject];
+        NSString *address = [NSString stringWithFormat:@"%@, %@, %@, %@", placemark.thoroughfare, placemark.locality, placemark.administrativeArea, placemark.postalCode];
+        if (placemark.thoroughfare != NULL) {
+            self.addressLabel.text = address;
+        } else {
+            self.addressLabel.text = @"";
+        }
+
+    }];
 }
 
 @end
