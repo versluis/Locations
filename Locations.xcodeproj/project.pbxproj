@@ -22,6 +22,7 @@
 		D2254BAF18803C0B00958702 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2254BAD18803C0B00958702 /* InfoPlist.strings */; };
 		D2254BB118803C0B00958702 /* LocationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2254BB018803C0B00958702 /* LocationsTests.m */; };
 		D2254BBB1880416400958702 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2254BBA1880416400958702 /* CoreLocation.framework */; };
+		D2254BBD18808CAE00958702 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2254BBC18808CAE00958702 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		D2254BAE18803C0B00958702 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D2254BB018803C0B00958702 /* LocationsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationsTests.m; sourceTree = "<group>"; };
 		D2254BBA1880416400958702 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D2254BBC18808CAE00958702 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2254BBD18808CAE00958702 /* MapKit.framework in Frameworks */,
 				D2254BBB1880416400958702 /* CoreLocation.framework in Frameworks */,
 				D2254B8818803C0B00958702 /* CoreGraphics.framework in Frameworks */,
 				D2254B8A18803C0B00958702 /* UIKit.framework in Frameworks */,
@@ -104,6 +107,7 @@
 		D2254B8418803C0B00958702 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2254BBC18808CAE00958702 /* MapKit.framework */,
 				D2254BBA1880416400958702 /* CoreLocation.framework */,
 				D2254B8518803C0B00958702 /* Foundation.framework */,
 				D2254B8718803C0B00958702 /* CoreGraphics.framework */,

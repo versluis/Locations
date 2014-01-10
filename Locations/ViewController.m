@@ -10,6 +10,7 @@
 
 @interface ViewController ()
 
+@property (strong, nonatomic) CLLocationManager *manager;
 @property (strong, nonatomic) IBOutlet UILabel *longLabel;
 @property (strong, nonatomic) IBOutlet UILabel *latLabel;
 @property (strong, nonatomic) IBOutlet UILabel *accuracyLabel;
@@ -29,13 +30,22 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (CLLocationManager *)manager {
+    
+    if (!_manager) {
+        _manager = [[CLLocationManager alloc]init];
+        _manager.delegate = self;
+        _manager.desiredAccuracy = kCLLocationAccuracyBest;
+    }
+    return _manager;
+}
+
 - (void)startLocations {
     
     // create and start the location manager
-    CLLocationManager *manager = [[CLLocationManager alloc]init];
-    manager.delegate = self;
-    manager.desiredAccuracy = kCLLocationAccuracyBest;
-    [manager startUpdatingLocation];
+    
+    [self.manager startUpdatingLocation];
+    [self.manager stopUpdatingLocation];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
