@@ -23,6 +23,7 @@
 		D2254BB118803C0B00958702 /* LocationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2254BB018803C0B00958702 /* LocationsTests.m */; };
 		D2254BBB1880416400958702 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2254BBA1880416400958702 /* CoreLocation.framework */; };
 		D2254BBD18808CAE00958702 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2254BBC18808CAE00958702 /* MapKit.framework */; };
+		D257127318DB56C900F1379C /* Pin.m in Sources */ = {isa = PBXBuildFile; fileRef = D257127218DB56C900F1379C /* Pin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		D2254BB018803C0B00958702 /* LocationsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationsTests.m; sourceTree = "<group>"; };
 		D2254BBA1880416400958702 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D2254BBC18808CAE00958702 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D257127118DB56C900F1379C /* Pin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pin.h; sourceTree = "<group>"; };
+		D257127218DB56C900F1379C /* Pin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pin.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +128,8 @@
 				D2254B9718803C0B00958702 /* Main.storyboard */,
 				D2254B9A18803C0B00958702 /* ViewController.h */,
 				D2254B9B18803C0B00958702 /* ViewController.m */,
+				D257127118DB56C900F1379C /* Pin.h */,
+				D257127218DB56C900F1379C /* Pin.m */,
 				D2254B9D18803C0B00958702 /* Images.xcassets */,
 				D2254B8C18803C0B00958702 /* Supporting Files */,
 			);
@@ -260,6 +265,7 @@
 				D2254B9C18803C0B00958702 /* ViewController.m in Sources */,
 				D2254B9618803C0B00958702 /* AppDelegate.m in Sources */,
 				D2254B9218803C0B00958702 /* main.m in Sources */,
+				D257127318DB56C900F1379C /* Pin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +476,7 @@
 				D2254BB618803C0B00958702 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2254BB718803C0B00958702 /* Build configuration list for PBXNativeTarget "LocationsTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +485,7 @@
 				D2254BB918803C0B00958702 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

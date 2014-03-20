@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Pin.h"
 
 @interface ViewController ()
 
@@ -24,6 +25,11 @@
 {
     [super viewDidLoad];
 	[self startLocations];
+    
+    // add a long press gesture
+    UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(addPin:)];
+    recognizer.minimumPressDuration = 0.5;
+    [self.mapView addGestureRecognizer:recognizer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,6 +48,20 @@
         _manager.desiredAccuracy = kCLLocationAccuracyBest;
     }
     return _manager;
+}
+
+- (MKMapView *)mapView {
+    
+    if (!_mapView) {
+        _mapView = [[MKMapView alloc]init];
+        
+        // add a long press gesture
+        UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(addPin:)];
+        recognizer.minimumPressDuration = 0.5;
+        [_mapView addGestureRecognizer:recognizer];
+
+    }
+    return _mapView;
 }
 
 - (void)startLocations {
@@ -109,6 +129,25 @@
         }
 
     }];
+}
+
+// let the user add their own pins
+
+- (void)addPin:(UIGestureRecognizer *)recognizer {
+    
+    if (recognizer.state != UIGestureRecognizerStateBegan) {
+        return;
+    }
+    
+    // convert touched position to map coordinate
+    CGPoint userTouch = [recognizer locationInView:self.mapView];
+    CLLocationCoordinate2D mapPoint = [self.mapView convertPoint:userTouch toCoordinateFromView:self.mapView];
+    
+    // and add it to our view
+    Pin *newPin = [[Pin alloc]init];
+    newPin.coordinate = mapPoint;
+    [self.mapView addAnnotation:newPin];
+    
 }
 
 @end
