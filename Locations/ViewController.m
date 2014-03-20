@@ -148,6 +148,14 @@
     newPin.coordinate = mapPoint;
     [self.mapView addAnnotation:newPin];
     
+    // for a laugh: access all annotations and print them
+    NSArray *allPins = self.mapView.annotations;
+    int i = 1;
+    for (Pin *thisPin in allPins) {
+        NSLog(@"Pin No. %i: %f, %f", i, thisPin.coordinate.latitude, thisPin.coordinate.longitude);
+        i++;
+    }
+    
 }
 
 @end
