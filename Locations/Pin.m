@@ -10,8 +10,15 @@
 
 @implementation Pin
 
-@synthesize title;
-@synthesize subtitle;
-@synthesize coordinate;
+- (id)initWithCoordinate:(CLLocationCoordinate2D)newCoordinate {
+    
+    self = [super init];
+    if (self) {
+        _coordinate = newCoordinate;
+        _title = @"Hello";
+        _subtitle = @"Are you still there?";
+    }
+    return self;
+}
 
 @end

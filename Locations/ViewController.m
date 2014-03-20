@@ -50,20 +50,6 @@
     return _manager;
 }
 
-- (MKMapView *)mapView {
-    
-    if (!_mapView) {
-        _mapView = [[MKMapView alloc]init];
-        
-        // add a long press gesture
-        UILongPressGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(addPin:)];
-        recognizer.minimumPressDuration = 0.5;
-        [_mapView addGestureRecognizer:recognizer];
-
-    }
-    return _mapView;
-}
-
 - (void)startLocations {
     
     // create and start the location manager
@@ -144,17 +130,8 @@
     CLLocationCoordinate2D mapPoint = [self.mapView convertPoint:userTouch toCoordinateFromView:self.mapView];
     
     // and add it to our view
-    Pin *newPin = [[Pin alloc]init];
-    newPin.coordinate = mapPoint;
+    Pin *newPin = [[Pin alloc]initWithCoordinate:mapPoint];
     [self.mapView addAnnotation:newPin];
-    
-    // for a laugh: access all annotations and print them
-    NSArray *allPins = self.mapView.annotations;
-    int i = 1;
-    for (Pin *thisPin in allPins) {
-        NSLog(@"Pin No. %i: %f, %f", i, thisPin.coordinate.latitude, thisPin.coordinate.longitude);
-        i++;
-    }
     
 }
 
